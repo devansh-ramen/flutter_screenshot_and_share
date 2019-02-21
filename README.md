@@ -3,7 +3,13 @@
 A Flutter plugin to take a screenshot using native code and share it via the platform's share image dialog.
 
 ## Installation
-Add screenshot_share: ^0.0.1 in your pubspec.yaml dependencies.
+Add:
+
+``` yaml
+screenshot_share: ^0.0.1
+```
+
+in your pubspec.yaml dependencies.
 
 ## How to use #
 importing the library:
