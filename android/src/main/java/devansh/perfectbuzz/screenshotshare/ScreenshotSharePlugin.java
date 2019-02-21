@@ -1,6 +1,5 @@
 package devansh.perfectbuzz.screenshotshare;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -34,6 +33,8 @@ public class ScreenshotSharePlugin implements MethodCallHandler {
   private MethodChannel channel;
   private final int WRITE_ACCESS_REQUEST_ID = 12;
 
+  private String fileName;
+
   public ScreenshotSharePlugin(Registrar registrar, Activity activity, FlutterView flutterView, MethodChannel channel) {
     this.registrar = registrar;
     this.activity = activity;
@@ -52,7 +53,7 @@ public class ScreenshotSharePlugin implements MethodCallHandler {
 
           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (activity.checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-              takeScreenshot("screenshot");
+              takeScreenshot();
               return true;
             } else {
 
@@ -77,7 +78,7 @@ public class ScreenshotSharePlugin implements MethodCallHandler {
   @Override
   public void onMethodCall(MethodCall call, Result result) {
     if (call.method.equals("takeScreenshotAndShare")) {
-      //takeScreenshot("screenshot");
+
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         activity.requestPermissions(new String[]{ android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_ACCESS_REQUEST_ID);
       }
@@ -87,9 +88,13 @@ public class ScreenshotSharePlugin implements MethodCallHandler {
     }
   }
 
-  private void takeScreenshot(String fileName) {
+  private void takeScreenshot() {
     try {
       // image naming and path  to include sd card  appending name you choose for file
+      java.util.Date date =  new java.util.Date();
+      android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", date);
+      String fileName = "screenshot-" + date;
+
       String mPath = Environment.getExternalStorageDirectory().toString() + "/" + fileName + ".jpg";
 
       // create bitmap screen capture

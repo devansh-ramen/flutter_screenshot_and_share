@@ -1,8 +1,8 @@
-name: screenshot_share
-description: A new Flutter plugin.
+name: screenshot_and_share
+description: A Flutter plugin to take a screenshot using native code and share it via the platform's share image dialog.
 version: 0.0.1
-author:
-homepage:
+author: Devansh Ramen <devanshramen@gmail.com>
+homepage: https://github.com/devansh-ramen/flutter_screenshot_and_share
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

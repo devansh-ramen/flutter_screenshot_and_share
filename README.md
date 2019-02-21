@@ -1,14 +1,18 @@
 # screenshot_share
 
-A new Flutter plugin.
+A Flutter plugin to take a screenshot using native code and share it via the platform's share image dialog.
 
-## Getting Started
+## Installation
+Add screenshot_share: ^0.0.1 in your pubspec.yaml dependencies.
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.io/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+## How to use #
+importing the library:
+``` dart
+import 'package:screenshot_share/screenshot_share.dart';
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+Take screenshot & sharing:
+
+``` dart
+ScreenshotShare.takeScreenshotAndShare();
+```
